@@ -3,9 +3,9 @@
 tradeSim is a commercial activity scheduler for travel demand simulations. The input data for the model consist of businesses with their geo-location and vehicle fleet and private households within the model area. 
 For each vehicle, tradeSim generates an activity schedule such that each activity includes information on the type of activity, their duration, the distance to the destination, and the type of destination.
 
-## modelled variables and their attribute levels
+## Modelled Variables and their Attribute Levels
 
-### activity purposes
+### Activity Purposes
 
 The activity purpose is modelled using a nested logit model in which on the upper level it is determined if a private activity (1), the return to the vehicle's business (2) or a commercial activity is conducted. If a commercial activity is chosen, then on the lower level of the nested structure, the specified purpose (3-6) is determined. 
 
@@ -19,7 +19,7 @@ The activity purpose is modelled using a nested logit model in which on the uppe
 | 6         | other commercial        |
 
 
-### industry sectors
+### Industry Sectors
 
 KiD 2010 differentiates between the WZ 2008 industry sectors. However, there are many classes, some only have few observations in the data and cannot be used for model specification in their original format. Thus, industry sectors are clustered as follows:
 
@@ -27,7 +27,7 @@ KiD 2010 differentiates between the WZ 2008 industry sectors. However, there are
 - *Service*: G, H, I, J, K, L, M, N, Q, S
 - *Other*: P, R, T, U, O
 
-### vehicle classes
+### Vehicle Classes
 
 For the same reasons as explained above (see industry sectors), we have clustered the vehicle types according to the following structure:
 - *light vehicles [1]*:
@@ -44,7 +44,7 @@ For the same reasons as explained above (see industry sectors), we have clustere
   - other vehicles [9]
   
   
-  ### time of day groups:
+  ### Time of Day Groups:
   
   - morning:  between 4am and before 11am
   - day:      between 11am and before 9pm
