@@ -1,0 +1,5 @@
+a_string;b_int;c_long;d_float;e_double;f_bool
+alpha;42;1234;42.0;4.2136;true
+beta;13;56789;21.0;3.1415;false
+gamma;17;8765;1.23;2.3487;false
+delta;420;432;6.90;1.8459;true

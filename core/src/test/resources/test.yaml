@@ -1,0 +1,11 @@
+steps:
+- !testA
+  num: 2
+  name: hi
+
+- !testA
+  num: 3
+  name: hello
+  
+- !testB
+  percent: 0.42
