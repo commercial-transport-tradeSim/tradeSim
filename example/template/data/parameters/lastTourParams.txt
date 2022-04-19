@@ -1,0 +1,6 @@
+asc_last           = -3.666497 
+b_time_last        =  0.005707 
+b_wzInd_last       = -0.100328 
+b_wzDL_last        =  0.130960 
+b_lightFzg_last    = -0.569323 
+b_mediumFzg_last   =  0.257290 

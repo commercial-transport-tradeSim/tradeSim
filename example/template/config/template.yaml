@@ -1,0 +1,101 @@
+steps:
+- !simulationOptions
+  seed: 42
+  output: output/results/template
+
+
+
+- !loadBusinesses
+  file: template/data/businesses.csv
+  opportunityIds: template/data/opportunities/business_opportunity_ids.csv
+  fraction: 1
+      
+      
+      
+- !createVehicles
+  factor: 0.75
+  changers:
+  - !selectDeparture
+    distributionFile: template/data/distributions/departureTimesStrings.csv
+    
+    
+    
+- !loadOpportunities
+  loaders:
+  - !useBusinessOpportunities
+    active: true
+    
+  - !readOpportunityCsv
+    file: template/data/opportunities/construction_opportunities.csv
+    type: CONSTRUCTION_SITE
+    
+  - !readOpportunityCsv
+    file: template/data/opportunities/other_opportunities.csv
+    type: OTHER
+    
+  - !loadEcommerceCustomerOpportunities
+    population: template/data/opportunities/population.csv
+    parameters: template/data/parameters/paramsECommerceParticipation.txt
+    fraction: 1
+    logging: false
+    
+    
+    
+- !simulateTours
+  tourLengthDistribution: template/data/distributions/tourDistAndNumOfTrips.csv
+  defaultDistance: 20
+  defaultNumberOfTrips: 5
+  maxParallelTours: 10
+  
+  activityChangers:
+  - !selectPurposeInStages
+    first: !selectFirstPurposeLogitBased
+      parameters: template/data/parameters/firstTripParams.txt
+      logging: false
+    
+    other: !selectPurposeNestedLogitBased
+      parameters: template/data/parameters/activityPurpParams.txt
+      max: 15
+      logging: false
+    
+  - !drawDurationFromDistribution
+    file: template/data/distributions/activityDurationData.csv
+    defaultDuration: 10
+    
+  - !drawTripDistanceFromDistribution
+    file: template/data/distributions/tripDistDataOverTime.csv
+    defaultDistance: 10
+    
+  - !selectDestinationDistanceBased
+    parameters: template/data/parameters/destinationParams.txt
+    logging: false
+    detourFactor: 1.2
+    maxDeltaKm: 2.5
+    maxDestinations: 10
+    meanSpeedDistribution: template/data/distributions/speedDataDistanceRange.csv
+    
+  tourFilter: !filterToursByLength
+    maxDeltaFactor: 50
+    active: false
+    
+  tourSelector: !selectBestDistanceFitTour
+    logging: false
+    
+  continueChoice: !continueToursLogitBased
+    parameters: template/data/parameters/lastTourParams.txt
+    logging: false
+
+
+
+- !exportMatsim
+  vehicleTypeFile: matsim_vehicle_types.xml
+  carrierFile: matsim_carriers.xml
+  
+- !exportCsv
+  vehicleFile: vehicle.csv
+  activityFile: activity.csv
+    
+- !printStatistics
+  active: true
+  
+    

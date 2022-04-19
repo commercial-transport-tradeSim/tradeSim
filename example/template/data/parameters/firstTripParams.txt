@@ -1,0 +1,15 @@
+asc_goods             =  2.22161
+asc_service           = -0.41203
+asc_person            =  0.01040
+b_goods_wzInd         =  0.99104
+b_goods_wzDL          =  1.33709
+b_service_wzInd       =  1.50355
+b_service_wzDL        =  0.63644
+b_person_wzInd        =  0.26742
+b_person_wzDL         =  0.69510
+b_goods_lightFzg      = -3.83017
+b_goods_mediumFzg     = -1.42468
+b_service_lightFzg    =  0.50468
+b_service_mediumFzg   =  1.34379
+b_person_lightFzg     = -1.27759
+b_person_mediumFzg    = -1.72912
