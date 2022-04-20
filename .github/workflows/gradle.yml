@@ -28,7 +28,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Build with Gradle
+    - name: Build and Test with Gradle
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
-        arguments: clean --refresh-dependencies dependencies build
+        arguments: clean --refresh-dependencies dependencies build :core:test
