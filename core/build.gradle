@@ -5,6 +5,7 @@
 plugins {
     id 'tradeSim.java-library-conventions'
     id 'java'
+    id 'jacoco'
 }
 
 apply plugin: 'maven-publish'
@@ -36,6 +37,13 @@ task browseJavaDoc() {
 	doLast {
 		browse "${rootDir}/core/build/docs/javadoc/index.html"
 	}
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
 
 def browse(path) {
